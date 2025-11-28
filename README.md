@@ -1,120 +1,339 @@
-# Amtica E-commerce
+# 🛒 Amtica E-commerce
 
-Amtica E-commerce is a full-featured, web-based e-commerce platform for managing products, features, categories, and users. The application supports customizable product features and advanced administration through a role-based UI. Built primarily in TypeScript, with supporting HTML, JavaScript, and CSS, it leverages Angular for the frontend and Node.js/Express with MongoDB for backend APIs and persistence.
+> A full-featured, web-based e-commerce platform for managing products, features, categories, and users with role-based administration
 
-## Live Demo
+[![Node.js](https://img.shields.io/badge/Node.js-10.14.1-green.svg)](https://nodejs.org/)
+[![Angular](https://img.shields.io/badge/Angular-6.0.8-red.svg)](https://angular.io/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen.svg)](https://www.mongodb.com/atlas)
+[![License](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
 
-You can view a (possibly outdated) deployment at:  
-[https://amitca-ecommerce.herokuapp.com/](https://amitca-ecommerce.herokuapp.com/)
+## 📋 Overview
 
-## Features
+Amtica E-commerce is a comprehensive e-commerce platform built using the **MEAN** stack (MongoDB, Express.js, Angular, Node.js). The application supports customizable product features, hierarchical category management, and advanced administration through a role-based user interface.
 
-- **Role-Based Admin Panel:** Custom admin experience with `Root Admin` features for deep control.
-- **Product Management:** 
-  - Create, update, and manage products and their details.
-  - Associate products with categories and subcategories.
-- **Custom Feature Creation:** 
-  - Add single choice, multiple choice, fill-in-the-blank, and other feature types to products.
-  - Define possible options (answers) for features.
-- **Category & Subcategory Organization:**
-  - Organize products under hierarchical categories for easy browsing and management.
-- **User Management:** 
-  - Support for roles: root, seller, member.
-  - User information includes details like full name, email, password (hashed), profile pictures, and contact information.
-- **Responsive UI:** 
-  - Modern, mobile-friendly frontend using Angular, Bootstrap, and FontAwesome.
-  - Dynamic and reactive forms for feature and product creation.
-- **API Server:** 
-  - REST endpoints for managing users, categories, products, and features.
+**🌐 Live Demo:** [amitca-ecommerce.herokuapp.com](https://amitca-ecommerce.herokuapp.com/)
 
-## Tech Stack
+## ✨ Features
 
-- **Frontend:** Angular (with Angular CLI), TypeScript, Bootstrap, FontAwesome
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (Mongoose ORM)
-- **Other:** RxJS, SCSS for styles
-- **Testing:** Karma, Protractor (Angular testing tools)
+### 🔐 Role-Based Access Control
+- **Root Admin** - Full system control with advanced features
+- **Seller** - Product and inventory management
+- **Member** - Standard user access
 
-## Getting Started
+### 📦 Product Management
+- Create, update, and manage products
+- Associate products with categories and subcategories
+- Upload product images with Multer
+- Define product specifications and details
+
+### 🎛️ Custom Feature System
+- **Single Choice** - Radio button style features
+- **Multiple Choice** - Checkbox style features
+- **Fill-in-the-Blank** - Text input features
+- Define possible options/answers for each feature
+
+### 📂 Category Organization
+- Hierarchical category structure
+- Unlimited subcategory nesting
+- Easy product categorization
+- Bulk category operations
+
+### 👥 User Management
+- Secure authentication with JWT
+- Password hashing with bcrypt
+- Profile pictures and contact information
+- User roles and permissions
+
+### 🎨 Modern UI/UX
+- Responsive design with Bootstrap
+- FontAwesome icons
+- Dynamic reactive forms
+- Mobile-friendly interface
+
+## 🛠️ Tech Stack
+
+### Backend
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Node.js** | 10.14.1 | Runtime environment |
+| **Express.js** | 4.16.2 | Web framework |
+| **MongoDB** | - | NoSQL database |
+| **Mongoose** | 5.0.2 | MongoDB ODM |
+| **JWT** | 8.1.1 | Authentication tokens |
+| **bcrypt** | 3.0.2 | Password hashing |
+| **Multer** | 1.4.1 | File upload handling |
+| **Socket.io** | 2.1.1 | Real-time communication |
+| **Morgan** | 1.9.0 | HTTP request logging |
+| **CORS** | 2.8.4 | Cross-origin resource sharing |
+
+### Frontend
+
+| Technology | Purpose |
+|------------|---------|
+| **Angular 6** | Frontend framework |
+| **TypeScript** | Programming language |
+| **Bootstrap** | UI components |
+| **FontAwesome** | Icon library |
+| **RxJS** | Reactive programming |
+| **SCSS** | Styling |
+| **Karma** | Unit testing |
+| **Protractor** | E2E testing |
+
+## 📁 Project Structure
+
+```
+amtica-ecommerce/
+├── 📂 public/                      # Angular frontend application
+│   ├── 📂 dist/public/            # Production build output
+│   ├── 📂 e2e/                    # End-to-end test specs
+│   ├── 📂 src/                    # Angular source code
+│   │   ├── 📂 app/               # Application components
+│   │   │   ├── 📂 root-admin/   # Admin dashboard components
+│   │   │   ├── 📂 products/     # Product management
+│   │   │   ├── 📂 categories/   # Category management
+│   │   │   └── 📂 shared/       # Shared components
+│   │   ├── 📂 assets/            # Static assets
+│   │   └── 📂 environments/      # Environment configs
+│   ├── angular.json
+│   ├── tsconfig.json
+│   └── package.json
+│
+├── 📂 src/                         # Backend source code
+│   ├── 📂 api/
+│   │   ├── 📂 controllers/       # Route controllers
+│   │   ├── 📂 models/            # Mongoose schemas
+│   │   │   ├── categories.model.js
+│   │   │   ├── product.model.js
+│   │   │   └── user.model.js
+│   │   ├── 📂 routes/            # API routes
+│   │   │   ├── category.route.js
+│   │   │   ├── product.route.js
+│   │   │   └── user.route.js
+│   │   └── app.js                 # Express configuration
+│   ├── 📂 utils/                  # Utility functions
+│   └── db.js                      # MongoDB connection
+│
+├── 📂 uploads/                     # Uploaded files storage
+├── development.config.js           # Development config
+├── nodemon.json                    # Nodemon config
+├── package.json                    # Backend dependencies
+└── server.js                       # Entry point
+```
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js >= 10.x
-- npm >= 6.x
-- MongoDB database (local or remote)
+- **Node.js** >= 10.x
+- **npm** >= 6.x
+- **MongoDB** (local or cloud instance)
+- **Angular CLI** v6.0.8
 
 ### Installation
 
-#### Backend
-
-1. Clone the repository:
+1. **Clone the repository**
    ```bash
    git clone https://github.com/shubhamcommits/amtica-ecommerce.git
    cd amtica-ecommerce
    ```
-2. Install server dependencies:
+
+2. **Install backend dependencies**
    ```bash
-   cd src
    npm install
    ```
-3. Setup environment variables as needed (e.g., MongoDB URI).
 
-4. Start the backend server:
+3. **Install frontend dependencies**
+   ```bash
+   cd public
+   npm install
+   cd ..
+   ```
+
+4. **Configure environment**
+   
+   Update MongoDB connection in `src/db.js`:
+   ```javascript
+   const dbURL = 'mongodb://localhost:27017/amtica-ecommerce';
+   // OR for MongoDB Atlas:
+   const dbURL = 'mongodb+srv://<username>:<password>@cluster.mongodb.net/amtica';
+   ```
+
+### Running the Application
+
+#### Development Mode
+
+1. **Start the backend server**
+   ```bash
+   npm run dev
+   ```
+   Backend runs at `http://localhost:3000`
+
+2. **Start the Angular dev server** (new terminal)
+   ```bash
+   cd public
+   ng serve
+   ```
+   Frontend runs at `http://localhost:4200`
+
+#### Production Mode
+
+1. **Build the Angular app**
+   ```bash
+   cd public
+   ng build --prod
+   cd ..
+   ```
+
+2. **Start the server**
    ```bash
    npm start
    ```
+   
+   Access the app at `http://localhost:3000`
 
-#### Frontend
+## 📡 API Endpoints
 
-1. From the `amtica-ecommerce/public/` directory, install dependencies:
+### Categories
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/categories` | Get all categories |
+| `GET` | `/api/categories/:id` | Get category by ID |
+| `POST` | `/api/categories` | Create new category |
+| `PUT` | `/api/categories/:id` | Update category |
+| `DELETE` | `/api/categories/:id` | Delete category |
+
+### Products
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/products` | Get all products |
+| `GET` | `/api/products/:id` | Get product by ID |
+| `POST` | `/api/products` | Create new product |
+| `PUT` | `/api/products/:id` | Update product |
+| `DELETE` | `/api/products/:id` | Delete product |
+
+### Users
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/users` | Get all users |
+| `GET` | `/api/users/:id` | Get user by ID |
+| `POST` | `/api/users/register` | Register new user |
+| `POST` | `/api/users/login` | User login |
+| `PUT` | `/api/users/:id` | Update user |
+| `DELETE` | `/api/users/:id` | Delete user |
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+npm test
+```
+
+### Frontend Unit Tests
+```bash
+cd public
+ng test
+```
+
+### Frontend E2E Tests
+```bash
+cd public
+ng e2e
+```
+
+## 🚢 Deployment
+
+### Heroku Deployment
+
+1. **Create Heroku app**
    ```bash
-   cd ../public
-   npm install
+   heroku create amtica-ecommerce
    ```
 
-2. Run the development server:
+2. **Set environment variables**
    ```bash
-   ng serve
+   heroku config:set NODE_ENV=production
+   heroku config:set MONGODB_URI=<your-mongodb-uri>
    ```
-3. Visit [http://localhost:4200](http://localhost:4200) in your browser.
 
-## Development Scripts (Frontend)
+3. **Deploy**
+   ```bash
+   git push heroku master
+   ```
 
-- `ng serve` – Start local Angular dev server.
-- `ng build` – Build frontend production bundle.
-- `ng test` – Run unit tests via Karma.
-- `ng e2e` – Run end-to-end tests via Protractor.
+## 📊 Language Distribution
 
-## Project Structure
+| Language | Percentage |
+|----------|------------|
+| TypeScript | 54.3% |
+| HTML | 30.1% |
+| JavaScript | 10.7% |
+| SCSS | 4.9% |
 
+## 🗃️ Data Models
+
+### User Schema
+```javascript
+{
+  fullName: String,
+  email: String (unique),
+  password: String (hashed),
+  role: String (root/seller/member),
+  profilePicture: String,
+  contactInfo: Object,
+  createdAt: Date,
+  updatedAt: Date
+}
 ```
-amtica-ecommerce/
-├── public/                     # Frontend Angular application
-│   ├── src/
-│   ├── app/
-│   ├── environments/
-│   └── ...
-├── src/                        # Backend Node/Express API
-│   ├── api/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── controllers/
-│   └── utils/
-└── ...
+
+### Product Schema
+```javascript
+{
+  name: String,
+  description: String,
+  price: Number,
+  category: ObjectId (ref: Category),
+  features: Array,
+  images: Array,
+  seller: ObjectId (ref: User),
+  createdAt: Date,
+  updatedAt: Date
+}
 ```
 
-## Notable Files
+### Category Schema
+```javascript
+{
+  name: String,
+  description: String,
+  parent: ObjectId (ref: Category),
+  subcategories: Array,
+  createdAt: Date,
+  updatedAt: Date
+}
+```
 
-- `public/src/app/root-admin/*`: Admin dashboard components, feature and product UI logic
-- `src/api/models/*.js`: Mongoose schemas for core models like user, product, category
-- `src/api/routes/*.js`: Express routes for REST API
+## 🤝 Contributing
 
-## Contribution
+Contributions are welcome! Please follow these steps:
 
-Pull requests are welcome! For larger changes, please open an issue first to discuss what you would like to change.
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
 
-## License
+## 📄 License
 
-No license information is present; please request clarification from the repository owner before contributing or using in production.
+This project is licensed under the **ISC License**.
+
+## 👤 Author
+
+**Shubham Singh** - [@shubhamcommits](https://github.com/shubhamcommits)
 
 ---
+
+<p align="center">
+  Built with ❤️ for Amtica Ltd using the MEAN Stack
+</p>
+
